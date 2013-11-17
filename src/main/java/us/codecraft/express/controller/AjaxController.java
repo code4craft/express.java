@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStreamWriter;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -28,9 +29,10 @@ public abstract class AjaxController extends ContextAwareController {
             }
 		}
 		Object result = ajax(params);
-		response.getOutputStream().print(JSON.toJSONString(result));
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(response.getOutputStream(), "utf-8");
+        outputStreamWriter.write(JSON.toJSONString(result));
         response.setStatus(200);
-        response.flushBuffer();
+        outputStreamWriter.flush();
 	}
 
 	public abstract Object ajax(ParamMap params);
