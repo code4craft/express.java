@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 import java.util.Map;
 
 /**
@@ -16,8 +17,15 @@ public abstract class AjaxController extends ContextAwareController {
 		Map<String, String[]> parameterMap = request.getParameterMap();
 		ParamMap params = new ParamMap();
 		for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
-            //todo:support multi-params
+			// todo:support multi-params
 			params.put(stringEntry.getKey(), stringEntry.getValue()[0]);
+		}
+		Enumeration<String> attributeNames = request.getAttributeNames();
+		while (attributeNames.hasMoreElements()) {
+			String key = attributeNames.nextElement();
+            if (request.getAttribute(key) instanceof String){
+                params.put(key, request.getAttribute(key).toString());
+            }
 		}
 		Object result = ajax(params);
 		response.getOutputStream().print(JSON.toJSONString(result));

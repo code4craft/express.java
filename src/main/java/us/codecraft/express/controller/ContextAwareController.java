@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class ContextAwareController implements Controller {
 
-	private ThreadLocal<HttpServletRequest> requests;
+	private ThreadLocal<HttpServletRequest> requests = new ThreadLocal<HttpServletRequest>();
 
-	private ThreadLocal<HttpServletResponse> responses;
+	private ThreadLocal<HttpServletResponse> responses = new ThreadLocal<HttpServletResponse>();
 
 	protected abstract void doExecute(HttpServletRequest request, HttpServletResponse response) throws Exception;
 

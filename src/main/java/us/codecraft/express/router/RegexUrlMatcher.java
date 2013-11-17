@@ -28,7 +28,7 @@ public class RegexUrlMatcher extends UrlMatcher {
 		if (matcher.matches()) {
 			if (pathVariables != null && pathVariables.size() > 0) {
 				for (int i = 0; i < matcher.groupCount(); i++) {
-					request.setAttribute(pathVariables.get(i), matcher.group(i));
+					request.setAttribute(pathVariables.get(i), matcher.group(i+1));
 				}
 			}
 			return true;
@@ -42,7 +42,7 @@ public class RegexUrlMatcher extends UrlMatcher {
         List<String> pathVariables = new ArrayList<String>();
         while (matcher.find()){
             pathVariables.add(matcher.group(1));
-            matcher.appendReplacement(accum,"[^/]+");
+            matcher.appendReplacement(accum,"([^/]+)");
         }
         matcher.appendTail(accum);
         return new RegexUrlMatcher(Pattern.compile(accum.toString()),pathVariables);
