@@ -11,11 +11,11 @@ import us.codecraft.express.controller.ResultMap;
 public class RestJson {
 
 	public static void main(String[] args) {
-WebServer.jettyServer().get("/", new AjaxController() {
-    @Override
-    public Object ajax(ParamMap params) {
-        return ResultMap.create().put("code", 200);
-    }
-}).port(8080).start();
+    WebServer.jettyServer().get("/", new AjaxController() {
+        @Override
+        public Object ajax(ParamMap params) {
+            return ResultMap.create().put("code", 200);
+        }
+    }).port(8080).start();
 	}
 }
