@@ -15,5 +15,4 @@ express.java
             return ResultMap.create().put("code", 200);
         }
     }).port(8080).start();
-}).port(8080).start();
 ```
