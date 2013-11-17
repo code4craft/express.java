@@ -23,7 +23,7 @@ public class AjaxControllerTest {
         mockRequest.setRequestURI("/12/start");
         boolean match = regexUrlMatcher.match(mockRequest);
         Assert.assertTrue(match);
-        HttpServletResponse mockRespones = new MockHttpServletResponse();
+        HttpServletResponse mockResponse = new MockHttpServletResponse();
         AjaxController ajaxController = new AjaxController() {
             @Override
             public Object ajax(ParamMap params) {
@@ -32,6 +32,6 @@ public class AjaxControllerTest {
                 return params;
             }
         };
-		ajaxController.execute(mockRequest, mockRespones);
+		ajaxController.execute(mockRequest, mockResponse);
 	}
 }
