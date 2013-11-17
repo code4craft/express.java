@@ -14,9 +14,9 @@ public abstract class WebServer {
 
 	public abstract WebServer post(String url, Controller controller);
 
-    public abstract WebServer stop();
+    public abstract WebServer stop() throws Exception;
 
-    public abstract WebServer start();
+    public abstract WebServer start() throws Exception;
 
     public static WebServer jettyServer(){
         return new JettyWebServer();

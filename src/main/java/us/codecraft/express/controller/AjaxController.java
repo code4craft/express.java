@@ -29,6 +29,8 @@ public abstract class AjaxController extends ContextAwareController {
 		}
 		Object result = ajax(params);
 		response.getOutputStream().print(JSON.toJSONString(result));
+        response.setStatus(200);
+        response.flushBuffer();
 	}
 
 	public abstract Object ajax(ParamMap params);
