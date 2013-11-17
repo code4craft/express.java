@@ -8,7 +8,7 @@ import us.codecraft.express.controller.Controller;
  */
 public abstract class WebServer {
 
-	public abstract WebServer bind(int port);
+	public abstract WebServer port(int port);
 
 	public abstract WebServer get(String url, Controller controller);
 

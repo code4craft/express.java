@@ -8,7 +8,7 @@ import us.codecraft.express.WebServer;
  */
 public class JettyWebServer extends WebServer {
     @Override
-    public WebServer bind(int port) {
+    public WebServer port(int port) {
         return null;
     }
 
