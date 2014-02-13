@@ -1,6 +1,7 @@
 package us.codecraft.express;
 
 import us.codecraft.express.connector.jetty.JettyWebServer;
+import us.codecraft.express.connector.netty.NettyWebServer;
 import us.codecraft.express.controller.Controller;
 
 /**
@@ -20,6 +21,10 @@ public abstract class WebServer {
 
     public static WebServer jettyServer(){
         return new JettyWebServer();
+    }
+
+    public static WebServer nettyServer(){
+        return new NettyWebServer();
     }
 
 }
