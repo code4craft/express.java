@@ -11,7 +11,7 @@ import us.codecraft.express.controller.ResultMap;
 public class RestAjax {
 
 	public static void main(String[] args) throws Exception {
-		WebServer.nettyServer().get("/", new AjaxController() {
+		WebServer.jettyServer().get("/", new AjaxController() {
 			@Override
 			public Object ajax(ParamMap params) {
 				return ResultMap.create().put("code", 200).put("msg", "ok");

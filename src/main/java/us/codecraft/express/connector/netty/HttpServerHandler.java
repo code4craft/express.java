@@ -40,8 +40,8 @@ public class HttpServerHandler extends SimpleChannelUpstreamHandler {
                 HttpServletResponse httpServletResponse = new NettyHttpServletResponseAdaptor(response, ctx.getChannel());
                 urlRouter.route(httpServletRequest).execute(httpServletRequest, httpServletResponse);
                 response.headers().set(HttpHeaders.Names.CONTENT_LENGTH,response.getContent().writerIndex());
-                ctx.getChannel().write(response);
-                ctx.getChannel().close();
+                ChannelFuture future = ctx.getChannel().write(response);
+                future.addListener(ChannelFutureListener.CLOSE);
             } catch (Exception e) {
                 e.printStackTrace();
             }

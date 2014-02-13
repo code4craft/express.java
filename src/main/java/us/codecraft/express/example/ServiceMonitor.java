@@ -29,7 +29,7 @@ public class ServiceMonitor {
 	}
 
 	public static void main(String[] args) throws Exception {
-		WebServer server = WebServer.jettyServer().port(8080);
+		WebServer server = WebServer.nettyServer().port(8080);
 		ServiceMonitor serviceMonitor = new ServiceMonitor(server);
 		server.start();
 		for (int i = 0; i < 1000; i++) {
