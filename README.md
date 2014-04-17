@@ -27,6 +27,24 @@ express.java
     }).port(8080).start();
 ```
 
+* ### For Java8
+
+```JAVA
+public class RestAjax {
+
+    public static void main(String[] args) throws Exception {
+        WebServer.jettyServer().get("/", (params) -> {
+            return ResultMap.create().put("code", 200).put("msg", "ok");
+        }).get("/echo", (params) -> {
+            return params;
+        }).get("/echo/${id}", (params) -> {
+            return ResultMap.create().put("id", params.getInt("id"));
+        }).port(8080).start();
+    }
+}
+```
+
+
 ## License:
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
