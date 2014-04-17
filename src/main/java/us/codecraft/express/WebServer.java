@@ -2,6 +2,7 @@ package us.codecraft.express;
 
 import us.codecraft.express.connector.jetty.JettyWebServer;
 import us.codecraft.express.connector.netty.NettyWebServer;
+import us.codecraft.express.controller.AjaxController;
 import us.codecraft.express.controller.Controller;
 
 /**
@@ -13,7 +14,11 @@ public abstract class WebServer {
 
 	public abstract WebServer get(String url, Controller controller);
 
+    public abstract WebServer get(String url, AjaxController controller);
+
 	public abstract WebServer post(String url, Controller controller);
+
+    public abstract WebServer post(String url, AjaxController controller);
 
     public abstract WebServer stop() throws Exception;
 

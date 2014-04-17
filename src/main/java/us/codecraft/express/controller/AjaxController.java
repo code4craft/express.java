@@ -11,10 +11,10 @@ import java.util.Map;
 /**
  * @author code4crafter@gmail.com
  */
-public abstract class AjaxController extends ContextAwareController {
+@FunctionalInterface
+public interface AjaxController extends Controller {
 
-	@Override
-	protected void doExecute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	default public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String, String[]> parameterMap = request.getParameterMap();
 		ParamMap params = new ParamMap();
 		for (Map.Entry<String, String[]> stringEntry : parameterMap.entrySet()) {
@@ -35,5 +35,5 @@ public abstract class AjaxController extends ContextAwareController {
         outputStreamWriter.flush();
 	}
 
-	public abstract Object ajax(ParamMap params);
+	public Object ajax(ParamMap params);
 }
